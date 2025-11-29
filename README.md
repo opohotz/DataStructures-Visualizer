@@ -90,37 +90,37 @@ Interactive web app to **visualize and explore fundamental computer science data
 ## Data Structure Examples
 
 <div style="background:#eaf3ff; padding:10px; border-radius:5px; margin:10px 0;">
-<h3>Array</h3>
-<p>An <strong>array</strong> is a collection of elements stored in contiguous memory, accessible by index.</p>
-<pre><code>let arr = [1, 2, 3, 4];</code></pre>
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/1d_integer_array_diagram.svg" alt="Array Illustration" width="300">
+<h2>Array</h2>
+<p>An <strong>array</strong> is a collection of elements identified by index. Elements are stored in contiguous memory and can be accessed in O(1) time.</p>
+<p><strong>Ex:</strong> <code>let x = [5, 7, 2, 3, 8];</code></p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/1d_integer_array_diagram.svg" alt="Array Illustration" width="200">
 </div>
 
 <div style="background:#fff3e6; padding:10px; border-radius:5px; margin:10px 0;">
-<h3>Stack</h3>
-<p>A <strong>stack</strong> is Last-In-First-Out (LIFO). Push and pop elements from the top.</p>
-<pre><code>stack.push(5); stack.pop();</code></pre>
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Stack_push.svg" alt="Stack Illustration" width="300">
+<h2>Stack</h2>
+<p>A <strong>stack</strong> is a Last-In-First-Out (LIFO) structure. You can only push or pop elements from the top.</p>
+<p><strong>Example:</strong> <code>stack.push(5); stack.pop();</code></p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Stack-sv.svg" alt="Stack Illustration" width="200">
 </div>
 
 <div style="background:#e6fff3; padding:10px; border-radius:5px; margin:10px 0;">
-<h3>Queue</h3>
-<p>A <strong>queue</strong> is First-In-First-Out (FIFO). Enqueue at rear, dequeue at front.</p>
-<pre><code>queue.enqueue(1); queue.dequeue();</code></pre>
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Queue_FIFO.svg" alt="Queue Illustration" width="300">
+<h2>Queue</h2>
+<p>A <strong>queue</strong> is a First-In-First-Out (FIFO) structure. Elements are added at the rear and removed from the front.</p>
+<p><strong>Example:</strong> <code>queue.enqueue(1); queue.dequeue();</code></p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Data_Queue.svg" alt="Queue Illustration" width="200">
 </div>
 
 <div style="background:#f7eafc; padding:10px; border-radius:5px; margin:10px 0;">
-<h3>Linked List</h3>
-<p>A <strong>linked list</strong> is a sequence of nodes where each node points to the next.</p>
-<pre><code>node1.next = node2;</code></pre>
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg" alt="Linked List Illustration" width="300">
+<h2>Linked List</h2>
+<p>A <strong>linked list</strong> is a sequence of nodes where each node points to the next. It allows efficient insertion and removal at any position.</p>
+<p><strong>Example:</strong> <code>node1.next = node2;</code></p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/300px-Singly-linked-list.svg.png" alt="Linked List Illustration" width="200">
 </div>
 
 <div style="background:#fff0f0; padding:10px; border-radius:5px; margin:10px 0;">
-<h3>Binary Tree</h3>
-<p>A <strong>binary tree</strong> is a hierarchical structure with up to two children per node.</p>
-<pre><code>root.left = new Node(2); root.right = new Node(3);</code></pre>
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Binary_tree.svg" alt="Binary Tree Illustration" width="300">
+<h2>Binary Tree</h2>
+<p>A <strong>binary tree</strong> is a hierarchical structure where each node has up to two children. It is commonly used in search algorithms.</p>
+<p><strong>Example:</strong> <code>root.left = new Node(2); root.right = new Node(3);</code></p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/300px-Binary_tree.svg.png" alt="Binary Tree Illustration" width="200">
 </div>
 
