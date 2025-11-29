@@ -26,12 +26,6 @@ Interactive web app to **visualize and explore fundamental computer science data
 
 ---
 
-## 🖼 Screenshot / Preview
-
-<img src="https://raw.githubusercontent.com/yourusername/yourrepo/main/screenshot.png" alt="Data Structures Visualizer Screenshot" width="600">
-
----
-
 ## 🛠 Usage
 
 1. Clone the repository or download the files:
