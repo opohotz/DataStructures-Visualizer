@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opo's Data Structures Visualizer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #cec2c2;
+      transition: background 0.3s, color 0.3s;
+      display: flex;
+      
+    }
+    body.dark { background: #1e1e1e; color: #ddd; }
+    body.hacker { background: #000; color: #0f0; font-family: monospace; }
+    body.pastel { background: #f7eefa; color: #5c4d7d; }
+
+    header { background: #333; color: white; padding: 1rem; text-align: center; width: 100%; }
+    body.hacker header { background: #003300; color: #0f0; }
+    body.pastel header { background: #e4c7f5; color: #5c4d7d; }
+
+    #personal-desc {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 6px;
+        max-width: 300px;
+        font-size: 14px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        z-index: 100;
+        }
+
+        body.pastel #personal-desc {
+        background: rgba(92,77,125,0.8);
+        color: #fff;
+        }
+
+        body.hacker #personal-desc {
+        background: rgba(0,50,0,0.8);
+        color: #0f0;
+    }
+
+
+    #controls {
+      padding: 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+      flex-wrap: wrap;
+    }
+    body.dark #controls { background: #2b2b2b; }
+    body.hacker #controls { background: #001a00; color: #0f0; }
+    body.pastel #controls { background: #f3dff7; }
+
+    #main-content { display: flex; width: 100%; }
+    #visualizer { margin: 2rem; display: flex; flex-wrap: wrap; gap: 2rem; min-height: 200px; flex: 1; }
+
+    .node { padding: 1rem; background: #181a1b; color: white; border-radius: 6px; min-width: 40px; text-align: center; position: relative; animation: fadeIn 0.3s ease-out; transition: background 0.3s, color 0.3s; }
+    body.hacker .node { background: #003300; color: #0f0; border: 1px solid #0f0; }
+    body.pastel .node { background: #eac8ff; color: #5c4d7d; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+
+    .arrow { display: flex; align-items: center; font-size: 24px; margin: 0 5px; transition: color 0.3s; }
+    body.hacker .arrow { color: #0f0; }
+    body.pastel .arrow { color: #5c4d7d; }
+
+    .tree-level { display: flex; justify-content: center; width: 100%; gap: 2rem; }
+
+    #definition {
+      width: 250px;
+      padding: 1rem;
+      background: #fff;
+      border-left: 1px solid #ccc;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+      display: none;
+      flex-shrink: 0;
+      overflow-y: auto;
+    }
+    body.dark #definition { background: #2b2b2b; color: #ddd; border-color: #555; }
+    body.hacker #definition { background: #001a00; color: #0f0; border-color: #0f0; }
+    body.pastel #definition { background: #f3dff7; color: #5c4d7d; border-color: #c5b3e0; }
+  </style>
+</head>
+<body>
+  <div style="flex:1">
+    <header>
+      <h1>Data Structures Visualizer</h1>
+    </header>
+    <div id="personal-desc">
+        Hi! My name is Anjali and am earning my BS in Computer Science May 2026. I'm looking to connect with professionals in the industry and explore opportunities where I can be trained or start working in software technology. anjalixviswan@gmail.com
+    </div>
+
+    <div id="controls">
+      <label>Select Structure:</label>
+      <select id="structure-select" onchange="render()">
+        <option value="array">Array</option>
+        <option value="stack">Stack</option>
+        <option value="queue">Queue</option>
+        <option value="linkedlist">Linked List</option>
+        <option value="binarytree">Binary Tree</option>
+      </select>
+
+      <button onclick="toggleDefinition()">Definition</button>
+
+      <input id="value-input" type="text" placeholder="Value" />
+      <button onclick="insertValue()">Insert</button>
+      <button onclick="removeValue()">Remove</button>
+
+      <select id="theme-select" onchange="changeTheme()">
+        <option value="default">Default</option>
+        <option value="dark">Dark</option>
+        <option value="hacker">Hacker</option>
+        <option value="pastel">Pastel</option>
+      </select>
+    </div>
+
+    <div id="main-content">
+      <div id="visualizer"></div>
+      <div id="definition"></div>
+    </div>
+  </div>
+
+  <script>
+    const visualizer = document.getElementById('visualizer');
+    const definitionBox = document.getElementById('definition');
+    const definitions = {
+        array: `
+            <h2>Array</h2>
+            <p>An <strong>array</strong> is a collection of elements identified by index. Elements are stored in contiguous memory and can be accessed in O(1) time.</p>
+            <p><strong>Ex:</strong> <code>let x = [5, 7, 2, 3, 8];</code></p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/1d_integer_array_diagram.svg" alt="Array Illustration" width="200">
+        `,
+        stack: `
+            <h2>Stack</h2>
+            <p>A <strong>stack</strong> is a Last-In-First-Out (LIFO) structure. You can only push or pop elements from the top.</p>
+            <p><strong>Example:</strong> <code>stack.push(5); stack.pop();</code></p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Stack-sv.svg" alt="Stack Illustration" width="200">
+        `,
+        queue: `
+            <h2>Queue</h2>
+            <p>A <strong>queue</strong> is a First-In-First-Out (FIFO) structure. Elements are added at the rear and removed from the front.</p>
+            <p><strong>Example:</strong> <code>queue.enqueue(1); queue.dequeue();</code></p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Data_Queue.svg" alt="Queue Illustration" width="200">
+        `,
+        linkedlist: `
+            <h2>Linked List</h2>
+            <p>A <strong>linked list</strong> is a sequence of nodes where each node points to the next. It allows efficient insertion and removal at any position.</p>
+            <p><strong>Example:</strong> <code>node1.next = node2;</code></p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/300px-Singly-linked-list.svg.png" alt="Linked List Illustration" width="200">
+        `,
+        binarytree: `
+            <h2>Binary Tree</h2>
+            <p>A <strong>binary tree</strong> is a hierarchical structure where each node has up to two children. It is commonly used in search algorithms.</p>
+            <p><strong>Example:</strong> <code>root.left = new Node(2); root.right = new Node(3);</code></p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/300px-Binary_tree.svg.png" alt="Binary Tree Illustration" width="200">
+        `
+    };
+
+
+    const ds = { array: [], stack: [], queue: [], linkedlist: [], binarytree: [] };
+
+    function render(){
+      visualizer.innerHTML='';
+      const type=document.getElementById('structure-select').value;
+      const structure=ds[type];
+      if(type==='binarytree'){ renderBinaryTree(structure); return; }
+      structure.forEach((v,i)=>{
+        const node=document.createElement('div'); node.className='node'; node.textContent=v;
+        visualizer.appendChild(node);
+        if(type==='linkedlist'&&i<structure.length-1){ const arrow=document.createElement('div'); arrow.className='arrow'; arrow.textContent='→'; visualizer.appendChild(arrow); }
+      });
+    }
+
+    function insertValue(){
+      const type=document.getElementById('structure-select').value;
+      const val=document.getElementById('value-input').value; if(!val) return;
+      if(type==='array'||type==='stack'||type==='linkedlist') ds[type].push(val);
+      else if(type==='queue') ds.queue.push(val);
+      else if(type==='binarytree') ds.binarytree.push(val);
+      render();
+    }
+
+    function removeValue(){
+      const type=document.getElementById('structure-select').value;
+      if(type==='array'||type==='stack'||type==='linkedlist') ds[type].pop();
+      else if(type==='queue') ds.queue.shift();
+      else if(type==='binarytree') ds.binarytree.pop();
+      render();
+    }
+
+    function renderBinaryTree(values){
+      if(!values.length) return; let level=0,index=0;
+      while(index<values.length){
+        const levelContainer=document.createElement('div'); levelContainer.className='tree-level';
+        const count=Math.pow(2,level);
+        for(let i=0;i<count && index<values.length;i++,index++){
+          const node=document.createElement('div'); node.className='node'; node.textContent=values[index]; levelContainer.appendChild(node);
+        }
+        visualizer.appendChild(levelContainer); level++;
+      }
+    }
+
+    function toggleDefinition() {
+        if (definitionBox.style.display === 'block') {
+            definitionBox.style.display = 'none';
+        } else {
+            const type = document.getElementById('structure-select').value;
+            definitionBox.innerHTML = definitions[type];
+            definitionBox.style.display = 'block';
+        }
+        }
+
+
+    function changeTheme(){
+      const theme=document.getElementById('theme-select').value;
+      document.body.className='';
+      if(theme!=='default') document.body.classList.add(theme);
+    }
+
+    render();
+  </script>
+</body>
+</html>
