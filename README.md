@@ -93,7 +93,7 @@ Interactive web app to **visualize and explore fundamental computer science data
 <h3>Array</h3>
 <p>An <strong>array</strong> is a collection of elements stored in contiguous memory, accessible by index.</p>
 <pre><code>let arr = [1, 2, 3, 4];</code></pre>
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/1D_array_diagram.svg" alt="Array Illustration" width="300">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/1d_integer_array_diagram.svg" alt="Array Illustration" width="300">
 </div>
 
 <div style="background:#fff3e6; padding:10px; border-radius:5px; margin:10px 0;">
