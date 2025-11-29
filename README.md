@@ -37,8 +37,9 @@ Interactive web app to **visualize and explore fundamental computer science data
 1. Clone the repository or download the files:
 
 ```bash
-git clone <repository-url>
-cd data-structures-visualizer
+  git clone <repository-url>
+  cd data-structures-visualizer
+```
 
 
 2. Open index.html in a modern web browser (Chrome, Firefox, Edge, Safari).
