@@ -114,13 +114,13 @@ Interactive web app to **visualize and explore fundamental computer science data
 <h2>Linked List</h2>
 <p>A <strong>linked list</strong> is a sequence of nodes where each node points to the next. It allows efficient insertion and removal at any position.</p>
 <p><strong>Example:</strong> <code>node1.next = node2;</code></p>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/300px-Singly-linked-list.svg" alt="Linked List Illustration" width="200">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Singly-linked-list.svg/300px-Singly-linked-list.svg.png" alt="Linked List Illustration" width="200">
 </div>
 
 <div style="background:#fff0f0; padding:10px; border-radius:5px; margin:10px 0;">
 <h2>Binary Tree</h2>
 <p>A <strong>binary tree</strong> is a hierarchical structure where each node has up to two children. It is commonly used in search algorithms.</p>
 <p><strong>Example:</strong> <code>root.left = new Node(2); root.right = new Node(3);</code></p>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/300px-Binary_tree.svg" alt="Binary Tree Illustration" width="200">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/300px-Binary_tree.svg.png" alt="Binary Tree Illustration" width="200">
 </div>
 
