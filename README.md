@@ -73,10 +73,11 @@ Interactive web app to **visualize and explore fundamental computer science data
 
 ## Author
 
-- Computer Science student, graduating May 2026
+- Computer Science student, graduating 2026
 - Open to networking and opportunities in:
+  - Technical Marketing Engineer
+  - Solutions Engineer
   - Software Development
-  - Engineering
   - Project Management
 
 ---
